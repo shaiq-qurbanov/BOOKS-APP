@@ -21,9 +21,28 @@ class BookController extends Controller
     {
         $data = $request->id;
         return $book = Book::findOrFail($data)->delete();     
+    } 
+
+    
+    public function update(Request $request,Book $book)
+    {
+        $responce = false; 
+        $date = Carbon::now(); 
+        $data = $request->all();
+         if(!empty($data)) { 
+        $id = $data['id']; 
+        $firstname =  $data['name'];   
+        $lastname = $data['lname'];         
+        $email = $data['email'];
+        $updated_at = $date; 
+        \Log::info(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email]);        
+        $responce = $book->where('id', $id)->update(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email]);         
+         $book->refresh();
     }
 
-
+  
+    return response()->json($responce);
+}
 
 
     public function save(Request $request)
@@ -39,11 +58,9 @@ class BookController extends Controller
         $book->created_at = $date;
         $book->save();
        }
-     
-       return response()->json($data);
-    }
-
     
+       return response()->json($data);
+    }    
 
 }
 

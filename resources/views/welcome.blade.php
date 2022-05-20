@@ -2,8 +2,9 @@
 @extends('layouts.layout')
 @section('content')
 <h1>welcome</h1>
+<a href='/client'>client</a>
 <div class="table">
-<table>
+<table id="table">
     <tr>
         <th>id</th>
         <th>firstname</th>
@@ -18,20 +19,21 @@
     <td>{{ $book->firstname }}</td>
     <td>{{ $book->lastname  }}</td>
     <td>{{ $book->email  }}</td>
-    <td></td>
+    <td><div id="update"  data-id="{{ $book->id }}" class="update">up</div></td>
     <td><div id="del"  data-id="{{ $book->id }}" class="del"> del</div></td>
 </tr>
 @endforeach
 </table>
 </div>
 <div class="">
-<lable for="name">firstname</lable><br>
- <input type="text" value="" id="name"><br>
+<lable for="fname">firstname</lable><br>
+ <input type="text" value="" id="name" name="fname"><br>
  <lable for=lname>lastname</lable><br>
- <input type="text" value="" id="lname"><br>
+ <input type="text" value="" id="lname" name="lname"><br>
  <lable for="email">email</lable><br>
- <input type="email" value="" id="email"> 
- <button id="test">send</button>
+ <input type="email" value="" id="email" name="email"> 
+ <button id="test">create</button>
+ <button id="updated">update</button>
 </div> 
 {{ $books->links() }}  
 @stop
