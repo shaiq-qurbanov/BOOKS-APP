@@ -15,6 +15,7 @@
 
  @stop
 @yield("content")
+@yield("client")
 @section('footer') 
  <h1>footer</h1>
  <!-- <script src="{{ asset('js/app.js') }}"></script>  -->
