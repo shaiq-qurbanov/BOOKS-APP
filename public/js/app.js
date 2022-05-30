@@ -29,6 +29,7 @@ $(document).ready(function() {
      console.log(9999);
   });
 
+  //delete;
 
 $(".table").on('click','.del',function() {
   let data=$(this).data("id");
@@ -70,7 +71,7 @@ $("#updated").on('click',function(){
    id:user_id,
    };
   console.log(updated);
-  
+
     $.ajax ({
       type:'POST',
       url: location.href + "api/book/update",

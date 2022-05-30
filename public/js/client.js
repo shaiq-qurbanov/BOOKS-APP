@@ -82,12 +82,4 @@ $(document).ready(function(){
       }
     })
    })
-
-
-
-
-
-
-
-
 });
