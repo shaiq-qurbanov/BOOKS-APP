@@ -8,7 +8,25 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
-    public function index(Book $book)
+
+       public function save(Request $request)
+    {
+       $date = Carbon::now(); 
+       $data = $request->all();
+       $book = new Book();
+       if (!empty($data)) {
+        // \Log::info($data['name']);
+        $book->firstname = $data['name'];
+        $book->lastname = $data['lname'];
+        $book->email = $data['email'];
+        $book->created_at = $date;
+        $book->save();
+       }
+
+       return response()->json($data);
+    }    
+
+    public function show(Book $book)
     {
         $per_page=5;
        $books = $book->select(['id','firstname','lastname','email'])->paginate($per_page);
@@ -17,10 +35,11 @@ class BookController extends Controller
     
     
     
-    public function delete(Request $request)
+    public function delete(Request $request,Book $book)
     {
         $data = $request->id;
-        return $book = Book::findOrFail($data)->delete();     
+        \Log::info($data);   
+        return $book->where('id', $data)->delete();     
     } 
 
     
@@ -34,33 +53,16 @@ class BookController extends Controller
         $firstname =  $data['name'];   
         $lastname = $data['lname'];         
         $email = $data['email'];
-        $updated_at = $date; 
-        \Log::info(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email]);        
+        $updated_at = $date;        
         $responce = $book->where('id', $id)->update(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email]);         
          $book->refresh();
     }
-
   
     return response()->json($responce);
 }
 
 
-    public function save(Request $request)
-    {
-       $date = Carbon::now(); 
-       $data = $request->all();
-       $book = new Book();
-       if (!empty($data)) {
-        // \Log::info($data['name']);
-        $book->firstname = $data['name'];
-        $book->lastname = $data['lname'];
-        $book->email = $data['email'];
-        $book->created_at = $date;
-        $book->save();
-       }
+ 
     
-       return response()->json($data);
-    }    
-
 }
 

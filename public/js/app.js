@@ -4,43 +4,49 @@ $(document).ready(function() {
   let updated;
   let user_id;
   $("#test").click(function() {
-    $action = 'create';
+    action = 'create';
     let name = $("#name").val();
     let lname = $("#lname").val();
     let email = $("#email").val();
-    // console.log($("#email").val());
+    console.log($("#email").val());
+    console.log(name);
+    data = {
+      name:name,
+      lname:lname,
+      email:email,
+    };
+    console.log(data);
 
-     $.ajax ({
-       type:"POST",
-       url: location.href + "api/book/create",
-       data: {
-         name:name,
-         lname:lname,
-         email:email,
-       },
-       contenType: "aplication/json",
+     $.ajax({
+       method: 'POST',
+       url: location.href + 'api/book/create',
+       data: data,
+       dataType: 'aplication/json',
        succsess: function(data) {
-        //  console.log(data);
+       console.log(data);
        }
-     })
-  })
-  //delete
+     });
+     console.log(9999);
+  });
+
+
 $(".table").on('click','.del',function() {
   let data=$(this).data("id");
-  // console.log(data);
+  console.log(data);
 
 $.ajax({
 type:'POST',
 url: location.href + "api/book/delete",
 data: {id:data},
-contenType: "aplication/json",
+dataType: "aplication/json",
 success: function(data) {
-  // console.log(data);
+  console.log(data);
 } 
 
 })
 
-})
+})  
+
 //update
 
 $(".table").on('click','.update',function() {
@@ -49,9 +55,6 @@ $(".table").on('click','.update',function() {
 $("#name").val($(this).parent().parent().children().eq(1).text());
 $("#lname").val($(this).parent().parent().children().eq(2).text());
 $("#email").val($(this).parent().parent().children().eq(3).text());
-
-
- 
 
 })
 $("#updated").on('click',function(){
@@ -66,24 +69,25 @@ $("#updated").on('click',function(){
    email:email,
    id:user_id,
    };
-  console.log(666);
+  console.log(updated);
+  
     $.ajax ({
       type:'POST',
       url: location.href + "api/book/update",
       data: updated,
-      contenType: "aplcation/json",
+      dataType: "aplication/json",
       success: function(data) {
-        $('.table').load(location.href +'  .table > *');
-        console.log(888)
+        $('#table').load(location.href +'  #table > *');
+        console.log(data)
       }
       })
       
   
   
-  })
-  
+ })
 
-});
+}) 
+
     
 
 

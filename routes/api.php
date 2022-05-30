@@ -21,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('book/create', 'App\Http\Controllers\BookController@save');
 Route::post('book/delete', 'App\Http\Controllers\BookController@delete');
 Route::post('book/update', 'App\Http\Controllers\BookController@update');
+Route::post('student/create', 'App\Http\Controllers\StudentsController@save');
+Route::post('student/update', 'App\Http\Controllers\StudentsController@update');
+Route::post('student/delete', 'App\Http\Controllers\StudentsController@delete');

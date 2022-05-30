@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',function() {
 //     return view('welcome');
 // });
-Route::get('/','App\Http\Controllers\BookController@index');
+Route::get('/','App\Http\Controllers\BookController@show');
 Route::get('user','App\Http\Controllers\UserController@show');
 Route::get('layout','App\Http\Controllers\MyController@test');
-Route::get('client','App\Http\Controllers\ClientController@client');
+Route::get('client','App\Http\Controllers\ClientController@index');
+Route::get('student','App\Http\Controllers\StudentsController@index');

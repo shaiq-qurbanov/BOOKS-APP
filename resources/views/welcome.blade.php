@@ -1,8 +1,9 @@
 
 @extends('layouts.layout')
 @section('content')
+
 <h1>welcome</h1>
-<a href='/client'>client</a>
+<a href='/student'>student</a>
 <div class="table">
 <table id="table">
     <tr>
