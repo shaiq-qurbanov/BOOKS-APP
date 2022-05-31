@@ -15,7 +15,7 @@
 @foreach($students as $student)
 <tr>      
 <td>{{ $student->id }}</td>
-<td>{{ $student->country }}</td>
+<td><a href ="student/{{ $student->id }}">{{ $student->country }}</a></td>
 <td>{{ $student->city }}</td>
 <td>{{ $student->street }}</td>
 <td><div id="updateUp" data-id="{{ $student->id }}" class="update">up</div></td>

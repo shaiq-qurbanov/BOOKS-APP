@@ -21,3 +21,4 @@ Route::get('user','App\Http\Controllers\UserController@show');
 Route::get('layout','App\Http\Controllers\MyController@test');
 Route::get('client','App\Http\Controllers\ClientController@index');
 Route::get('student','App\Http\Controllers\StudentsController@index');
+Route::get('student/{id}','App\Http\Controllers\StudentInfoController@index');
