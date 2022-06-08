@@ -33,7 +33,7 @@ class StudentsController extends Controller
 }
 
 
-public function update(Request $request ,Student $student)
+public function update(Request $request,Student $student)
 {
     $responce = false;
     $date = Carbon::now();

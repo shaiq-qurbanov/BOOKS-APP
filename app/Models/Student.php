@@ -9,4 +9,9 @@ class Student extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'country','city', 'street','created_at'];
+
+    public function student_info()
+    {
+        return $this->hasOne(StudentInfo::class);
+    }
 }

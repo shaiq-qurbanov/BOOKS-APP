@@ -16,8 +16,8 @@
 <tr>      
 <td>{{ $student->id }}</td>
 <td><a href ="student/{{ $student->id }}">{{ $student->country }}</a></td>
-<td>{{ $student->city }}</td>
-<td>{{ $student->street }}</td>
+<td><a href ="student/{{ $student->id }}">{{ $student->city }}</a></td>
+<td><a href ="student/{{ $student->id }}">{{ $student->street }}</a></td>
 <td><div id="updateUp" data-id="{{ $student->id }}" class="update">up</div></td>
 <td><div id="delS" data-id="{{ $student->id }}" class="del">del</div></td>
 </tr>
